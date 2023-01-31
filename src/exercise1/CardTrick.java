@@ -8,21 +8,44 @@ package exercise1;
  * @author dancye
  * @author Paul Bonenfant Jan 25, 2022 
  */
+import java.lang.NullPointerException;
+import java.util.*;
 public class CardTrick {
     
     public static void main(String[] args) {
         
         Card[] hand = new Card[7];
+        
 
         for (int i = 0; i < hand.length; i++) {
             Card card = new Card();
+            int rNum = (int)Math.random() ;
+            card.setValue(rNum);
             //card.setValue(insert call to random number generator here)
             // 
             //card.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            card.setSuit(Card.SUITS[rNum * 5]);
             // Hint: You can use Random -> random.nextInt(n) to get a random number between 0 and n-1 (inclusive)
             //       Don't worry about duplicates at this point
         }
-
+        
+        
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the card value");
+        int cardNum = input.nextInt();
+        System.out.println("Enter the suit");
+        int suit = input.nextInt() - 1 ;
+        boolean found = false;
+        
+        for(int i = 0; i < hand.length ;i++){
+            if(hand[i].getValue() == cardNum && hand[i].getSuit().equals(Card.SUITS[suit]))
+                printInfo();
+               //rnf of if
+          
+            }//for
+            
+            
+        }//msin
         // insert code to ask the user for Card value and suit, create their card
         // and search the hand here. 
         // Hint: You can ask for values 1 to 10, and then
@@ -33,7 +56,7 @@ public class CardTrick {
         
         // If the guess is successful, invoke the printInfo() method below.
         
-    }
+    
 
     /**
      * A simple method to print out personal information. Follow the instructions to 
@@ -62,6 +85,6 @@ public class CardTrick {
         System.out.println();
         
     
-    }
+    }//printinfo
 
-}
+}//clsss
